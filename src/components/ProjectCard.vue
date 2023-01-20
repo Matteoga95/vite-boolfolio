@@ -1,11 +1,14 @@
 <script>
+import { RouterLink } from 'vue-router';
+
 export default {
     name: "ProjectCard",
     props: {
         project_title: String,
         body: String,
         image: String
-    }
+    },
+    components: { RouterLink }
 }
 </script>
 
@@ -18,6 +21,9 @@ export default {
             <p>
                 {{ body }}
             </p>
+            <RouterLink class="link" :to="{ name: 'singleProject' }" aria-current="page">
+                Read More
+            </RouterLink>
         </div>
     </div>
 
