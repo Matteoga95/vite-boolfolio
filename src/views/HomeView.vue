@@ -36,7 +36,7 @@ export default {
             if (path) {
                 return this.base_api_url + '/storage/' + path
             }
-            return '/img/500 placeholder.gif'
+            return '/img/500 placeholder.png'
         },
         /**
          * 
@@ -72,7 +72,8 @@ export default {
                 <div class="col" v-for="project in projects">
 
                     <projectCard v-for="projectCard in projects.data " :image="getImagePath(null)"
-                        :project_title="projectCard.project_title" :body="trimBody(projectCard.body)"></projectCard>
+                        :project_title="projectCard.project_title" :body="trimBody(projectCard.body)"
+                        :slug="projectCard.slug"></projectCard>
 
                 </div>
 

@@ -6,7 +6,8 @@ export default {
     props: {
         project_title: String,
         body: String,
-        image: String
+        image: String,
+        slug: String
     },
     components: { RouterLink }
 }
@@ -21,7 +22,7 @@ export default {
             <p>
                 {{ body }}
             </p>
-            <RouterLink class="link" :to="{ name: 'singleProject' }" aria-current="page">
+            <RouterLink class="link" :to="{ name: 'singleProject', params: { slug: slug } }" aria-current="page">
                 Read More
             </RouterLink>
         </div>

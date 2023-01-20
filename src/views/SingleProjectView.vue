@@ -1,10 +1,37 @@
 <script>
+import axios from 'axios';
+
 export default {
     name: "ProjectCard",
-    props: {
-        project_title: String,
-        body: String,
-        image: String
+    data() {
+        return {
+            project: null,
+            laoding: true,
+            base_api_url: 'http://localhost:8001'
+        }
+    },
+    mounted() {
+        const url = this.base_api_url + '/api/projects/' + this.$route.params.slug
+
+        axios
+            .get(url)
+            .then(response => {
+                if (response.data.success) {
+                    this.projects = response.data.data;
+                    this.loading = false
+                } else {
+                    //implementazione del 404
+
+                }
+                console.log(response.data.data);
+
+
+            })
+            .catch(error => {
+                console.error(error)
+                this.error = error.message
+                this.loading = false
+            })
     }
 }
 </script>
@@ -13,13 +40,12 @@ export default {
 
     <div class="container">
         <h1>Single Project</h1>
-        <img class="card-image" src="image" alt="">
+        <img class="img-fluid" src="../assets/img/500 placeholder.png" alt="">
+        <h1>{{ project.project_title }}</h1>
 
-        <h4>{{ project_title }}</h4>
-        <p>
-            {{ body }}
-        </p>
-
+        <div class="content">
+            {{ project.body }}
+        </div>
     </div>
 
 
@@ -27,7 +53,5 @@ export default {
 
 
 <style lang="scss">
-.serieCard {
-    color: white;
-}
+
 </style>
