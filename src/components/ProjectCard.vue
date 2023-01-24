@@ -16,7 +16,7 @@ export default {
 <template>
 
     <div class="card border-0 shadow-sm rounded-0">
-        <img class="card-image" src="image" alt="">
+        <img class="card-image" src="../assets/img/500 placeholder.png" alt="">
         <div class="card-body">
             <h4>{{ project_title }}</h4>
             <p>

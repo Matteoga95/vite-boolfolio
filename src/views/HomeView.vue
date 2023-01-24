@@ -1,90 +1,18 @@
 <script>
 
-import axios from 'axios';
-import projectCard from "../components/ProjectCard.vue"
-
 export default {
-    components: {
-        projectCard
-    },
-    data() {
-        return {
-            projects: null,
-            base_api_url: 'http://localhost:8001',
-            loading: true,
-            error: null,
-            max: 100
-        }
-    },
-    methods: {
-        getProjects(url) {
-            axios
-                .get(url)
-                .then(response => {
-                    console.log(response.data.data);
-                    this.projects = response.data.data;
-                    this.loading = false
-
-                })
-                .catch(error => {
-                    console.error(error)
-                    this.error = error.message
-                    this.loading = false
-                })
-        },
-        getImagePath(path) {
-            if (path) {
-                return this.base_api_url + '/storage/' + path
-            }
-            return '/img/500 placeholder.png'
-        },
-        /**
-         * 
-         * @param {string} text 
-         */
-        trimBody(text) {
-
-            if (text != null) {
-                if (text.length > this.max) {
-                    return text.slice(0, this.max) + '...'
-                } else {
-                    return text
-                }
-            }
-
-            return ""
-
-        }
-    },
-    mounted() {
-        this.getProjects(this.base_api_url + '/api/projects');
-    }
+    name: "HomeView",
 }
 </script>
 
 <template>
 
-    <section class="vue-home">
-        <div class="container">
-            <h1>Projects</h1>
-
-            <div class="row row-cols-1 row-cols-sm-3  g-4">
-                <div class="col" v-for="project in projects">
-
-                    <projectCard v-for="projectCard in projects.data " :image="getImagePath(null)"
-                        :project_title="projectCard.project_title" :body="trimBody(projectCard.body)"
-                        :slug="projectCard.slug"></projectCard>
-
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-12 d-flex flex-column justify-content-center align-items-center vh-100">
-
-                </div>
-            </div>
-        </div>
+    <section class="container d-flex    justify-content-center">
+        <h1 class="hero-heading">hi, i'm a<br>Web Developer </h1>
+        <img src="img/home.png" class="home-img" alt="">
     </section>
+
+
 </template>
 
 <style lang="scss">
