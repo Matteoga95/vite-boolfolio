@@ -8,58 +8,65 @@ export default {
 </script>
 
 <template>
-
-
-
-
-
-    <nav class="navbar navbar-expand-lg bg-light ">
-        <div class="container-fluid  d-flex">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-
+    <header>
+        <nav class="container-new d-flex justify-content-center flex-wrap">
+            <a href="#" class="logo">Portf<span>olio.</span></a>
+            <div class="links d-flex justify-content-between">
+                <ul class="d-flex justify-content-center w-100">
+                    <li>
                         <RouterLink class="nav-link" :to="{ name: 'home' }">
                             Home
                         </RouterLink>
+
                     </li>
-                    <li class="nav-item">
+                    <li>
                         <RouterLink class="nav-link" :to="{ name: 'home' }">
                             About
                         </RouterLink>
                     </li>
 
-                    <li class="nav-item">
+                    <li>
                         <RouterLink class="nav-link" :to="{ name: 'projects' }">
-                            Projects
+                            Portfolio
                         </RouterLink>
                     </li>
-                    <li class="nav-item">
+                    <li>
                         <RouterLink class="nav-link" :to="{ name: 'home' }">
                             Contacts
                         </RouterLink>
                     </li>
 
                 </ul>
-
+                <font-awesome-icon icon="fa-solid fa-moon" />
             </div>
-        </div>
-    </nav>
+        </nav>
 
-
-
+    </header>
 </template>
 
 
-<style lang="scss">
-.nav-item {
-    text-decoration: none;
-    margin: 0 10px;
+<style lang="scss" scoped>
+@use "../styles/general.scss";
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.links {
+    flex: 1;
+}
+
+.logo {
+    margin-right: 1.5rem;
+    height: 120px;
+    line-height: 120px;
+    font-family: "Abril Fatface", cursive;
+    font-size: 1.5rem;
+    color: $heading-color;
+    letter-spacing: 1px;
 }
 </style>
